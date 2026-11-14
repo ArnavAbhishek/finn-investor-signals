@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: finn-investor-signals
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: FINN_DATA_DIR
+        value: /tmp/finn_data

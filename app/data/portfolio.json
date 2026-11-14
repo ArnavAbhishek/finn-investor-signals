@@ -1,0 +1,20 @@
+[
+  {"symbol":"RELIANCE","name":"Reliance Industries","sector":"Energy & Retail"},
+  {"symbol":"TCS","name":"Tata Consultancy Services","sector":"IT Services"},
+  {"symbol":"HDFCBANK","name":"HDFC Bank","sector":"Banking"},
+  {"symbol":"INFY","name":"Infosys","sector":"IT Services"},
+  {"symbol":"ICICIBANK","name":"ICICI Bank","sector":"Banking"},
+  {"symbol":"ITC","name":"ITC","sector":"Consumer"},
+  {"symbol":"HINDUNILVR","name":"Hindustan Unilever","sector":"Consumer"},
+  {"symbol":"BHARTIARTL","name":"Bharti Airtel","sector":"Telecom"},
+  {"symbol":"SUNPHARMA","name":"Sun Pharma","sector":"Healthcare"},
+  {"symbol":"MARUTI","name":"Maruti Suzuki","sector":"Automobiles"},
+  {"symbol":"TITAN","name":"Titan Company","sector":"Consumer Discretionary"},
+  {"symbol":"ASIANPAINT","name":"Asian Paints","sector":"Materials"},
+  {"symbol":"ADANIPORTS","name":"Adani Ports","sector":"Logistics"},
+  {"symbol":"LT","name":"Larsen & Toubro","sector":"Industrial"},
+  {"symbol":"BAJFINANCE","name":"Bajaj Finance","sector":"Financial Services"},
+  {"symbol":"DMART","name":"Avenue Supermarts","sector":"Retail"},
+  {"symbol":"TRENT","name":"Trent","sector":"Retail"},
+  {"symbol":"SBIN","name":"State Bank of India","sector":"Banking"}
+]

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0a1822">
+  <meta name="description" content="FINN tracks meaningful NSE portfolio moves, official filings and primary-source research.">
+  <title>FINN · Investment intelligence</title>
+  <link rel="stylesheet" href="/assets/styles.css?v=4.0.0">
+  <link rel="stylesheet" href="/assets/finn4.css?v=4.0.0">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <a href="#overview" class="logo" data-nav="overview" aria-label="FINN overview"><span class="logo-mark">f<span>.</span></span><span class="logo-type"><strong>finn<span>.</span></strong><small>MARKETS, MADE CLEAR.</small></span></a>
+    <div class="nav-caption">WORKSPACE</div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button data-nav="overview" class="nav-item selected"><span class="nav-icon">◈</span> Overview</button>
+      <button data-nav="watchlist" class="nav-item"><span class="nav-icon">▦</span> Watchlist</button>
+      <button data-nav="portfolio" class="nav-item"><span class="nav-icon">▤</span> Portfolio</button>
+      <button data-nav="signals" class="nav-item"><span class="nav-icon">✳</span> Signals <span class="nav-bubble" id="navSignalCount" hidden>0</span></button>
+      <button data-nav="research" class="nav-item"><span class="nav-icon">⌕</span> Research</button>
+    </nav>
+    <div class="sidebar-foot"><span class="sidebar-mark">✦</span><b>Know what changed.</b><span>Understand why it matters.</span><small>FINN / ENAM BUILD CHALLENGE</small></div>
+  </aside>
+
+  <div class="app-frame">
+    <header class="topbar">
+      <div class="topbar-location"><span class="mobile-brand">f.</span><span id="pageLabel">Overview</span><span class="topbar-suffix">/ Investor workspace</span></div>
+      <div class="topbar-actions"><span class="update-label" id="updateLabel">Checking sources…</span><button class="refresh-button" id="refreshBtn" type="button" title="Force a new check of NSE filings and prices">↻ <span>Recheck sources</span></button><button class="top-info" id="dataInfoBtn" aria-label="How market data works" title="Data information">i</button></div>
+    </header>
+    <main>
+      <div class="status-line" id="statusLine"><span class="status-dot"></span><span id="statusText">Connecting to historical market sources…</span><button id="statusDetails" type="button">Source details</button></div>
+
+      <section class="page visible" id="page-overview" aria-label="Market overview">
+        <div class="intro"><div><div class="kicker" id="dateCaption">NSE / INVESTOR DESK</div><h1>See the market.<br><span class="heading-accent">Catch the signal.</span></h1><p>Your stocks. Material filings. The one thing worth reading next.</p></div><button class="primary-action intro-action" type="button" data-nav="watchlist">Explore stocks <span>↗</span></button></div>
+        <section class="featured-intelligence" aria-label="Verified company spotlight"><div class="feature-left"><div class="feature-eyebrow">● PRIMARY-SOURCE CASE · OCT 2026</div><h2>What did Infosys actually deliver?</h2><p>Four quarters of actual results against management's latest stated outlook, traced to company disclosures.</p><div class="feature-actions"><button type="button" class="feature-cta" id="featureResearchBtn">Explore the evidence ↗</button><span>Q2 FY27 · company filings</span></div></div><div class="feature-right"><span class="feature-label">Q2 FY27 revenue</span><strong id="featureRevenue">₹49,244 Cr</strong><div class="feature-comparison"><span id="featureGrowth">+2.14% QoQ</span><small>Consolidated IFRS</small></div><div class="feature-bars" id="featureBars"></div></div></section><div class="overview-grid">
+          <article class="pulse-card" id="pulseCard">
+            <div class="pulse-header"><span class="section-kicker invert">YOUR WATCHLIST / LAST MARKET SESSION</span><span class="session-tag" id="sessionTag">EOD data</span></div>
+            <div class="pulse-number-row"><div><span class="pulse-label">Watchlist breadth</span><strong class="pulse-number" id="breadthNumber">—</strong><span class="pulse-subtitle" id="breadthDescription">Checking watched companies</span></div><div class="pulse-symbol">↗</div></div>
+            <div class="breadth-track"><div class="breadth-positive" id="breadthBar"></div></div>
+            <div class="breadth-legend"><span><i class="legend-dot green"></i><b id="upCount">—</b> advancing</span><span><i class="legend-dot coral"></i><b id="downCount">—</b> declining</span><span><b id="dataCount">—</b> priced</span></div>
+            <div class="pulse-foot" id="pulseFoot">Latest available EOD records, not streaming quotes.</div>
+          </article>
+          <article class="movement-panel"><div class="section-top"><div><span class="section-kicker">WHAT MOVED</span><h2>Market movers</h2></div><button class="plain-link" type="button" data-nav="watchlist">All stocks ↗</button></div><div id="moversList" class="movers"><div class="skeleton-line"></div><div class="skeleton-line"></div></div></article>
+        </div>
+        <div class="section-top airy"><div><span class="section-kicker">YOUR STOCKS</span><h2>On your radar</h2></div><button class="plain-link" type="button" data-nav="watchlist">Manage watchlist ↗</button></div>
+        <div class="stock-tiles" id="overviewStocks"></div>
+        <div class="lower-grid">
+          <article class="white-card today-signals"><div class="section-top"><div><span class="section-kicker">PUSH / INTELLIGENCE</span><h2>Worth a look</h2></div><button class="plain-link" type="button" data-nav="signals">View feed ↗</button></div><div id="overviewSignals"><div class="loading-simple">Checking portfolio signals…</div></div></article>
+          <article class="portfolio-preview"><div class="section-kicker">MY PORTFOLIO</div><span class="port-preview-label" id="previewLabel">Sample holdings · editable</span><strong id="previewValue">—</strong><span id="previewReturn">Waiting for verified EOD prices</span><button type="button" data-nav="portfolio">View portfolio <span>↗</span></button></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-watchlist" aria-label="Watchlist">
+        <div class="page-heading"><div><span class="section-kicker">EXPLORE / NSE EQUITIES</span><h1>Your watchlist<span class="period">.</span></h1><p>Tap a stock to view its chart and latest filings. Add any valid NSE ticker.</p></div><button class="primary-action" type="button" id="addStockBtn">+ Add stock</button></div>
+        <div class="watch-tools"><label class="search-control"><span>⌕</span><input type="search" id="stockSearch" placeholder="Search company or symbol" aria-label="Search watchlist"></label><div id="watchSectors" class="sector-pills"></div></div>
+        <div id="watchlistCount" class="light-caption"></div>
+        <div class="watchlist-table" id="watchlistRows"></div>
+      </section>
+
+      <section class="page" id="page-portfolio" aria-label="Portfolio">
+        <div class="page-heading"><div><span class="section-kicker">POSITIONS / SAVED ON THIS DEVICE</span><h1>My portfolio<span class="period">.</span></h1><p>Track quantities, invested amount and returns using the latest available EOD prices.</p></div><button id="addHoldingBtn" class="primary-action" type="button">+ Add holding</button></div>
+        <div class="portfolio-kpis">
+          <div class="portfolio-total"><span>Current value</span><strong id="totalPortfolioValue">—</strong><small id="portfolioStamp">Waiting for market prices</small></div>
+          <div class="metric"><span>Invested amount</span><strong id="totalInvested">—</strong><small>Quantity × your purchase price</small></div>
+          <div class="metric"><span>Overall return</span><strong id="totalGain">—</strong><small id="gainPct">When matching prices are available</small></div>
+        </div>
+        <div class="portfolio-note"><span id="portfolioKind">Sample portfolio · replace these holdings with your own</span><div><button id="clearHoldingsBtn" type="button">Clear</button><button id="resetHoldingsBtn" type="button">Restore sample</button></div></div>
+        <div class="portfolio-grid"><div class="white-card portfolio-holdings"><div class="section-top"><h2>Holdings <span class="count-pill" id="holdingCount">0</span></h2></div><div id="holdingsRows"></div></div><div class="white-card allocation-card"><div class="section-kicker">PORTFOLIO EXPOSURE</div><h2>Sector mix</h2><div class="donut-wrap"><div class="donut" id="sectorDonut"><div><strong id="sectorCount">0</strong><span>sectors</span></div></div></div><div id="sectorLegend" class="sector-legend"></div></div></div>
+      </section>
+
+      <section class="page" id="page-signals" aria-label="Signals and filings">
+        <div class="page-heading"><div><span class="section-kicker">PUSH / INTELLIGENCE</span><h1>Signals, not noise<span class="period">.</span></h1><p>Exchange announcements ranked by significance and objective EOD trigger rules.</p></div><span class="help-note" id="feedSource">NSE filings</span></div>
+        <div class="signals-controls"><div class="segmented" id="digestPeriods"><button type="button" data-hours="24" class="selected">24h</button><button type="button" data-hours="168">7 days</button><button type="button" data-hours="720">30 days</button></div><label class="search-control"><span>⌕</span><input id="signalSearch" type="search" placeholder="Filter ticker or category"></label></div>
+        <div class="extra-filing-filters"><select id="filingCategory" aria-label="Filter corporate announcement category">
+<option value="all">All categories</option>
+<option value="results">Results</option><option value="M&amp;A">Mergers / acquisitions</option>
+<option value="fund_raise">Fund raising</option><option value="management_change">Leadership changes</option>
+<option value="litigation">Litigation / regulatory</option><option value="insider_trading">Insider trading</option>
+<option value="earnings_call">Earnings call</option><option value="investor_meetings">Investor meetings</option>
+<option value="credit_rating">Credit rating</option><option value="dividend">Dividend</option>
+<option value="bonus_split">Bonus / split</option><option value="capex">Capital expenditure</option>
+<option value="press_release">Company updates</option><option value="postal_ballot">Postal ballot</option>
+<option value="agm_egm">AGM / EGM</option><option value="pledging">Promoter pledging</option>
+<option value="unclassified">Unclassified / routine</option></select><button id="notifyBtn" type="button">Enable browser alerts</button><span class="notice-subtext">Checked while FINN is open. Not real-time market streaming.</span></div><div class="signals-grid"><div class="white-card"><div class="section-top"><div><span class="section-kicker">PRIORITY INBOX</span><h2>Corporate filings <span class="count-pill" id="filingCount">0</span></h2></div><label class="small-check"><input type="checkbox" id="showRoutine"> Routine</label></div><div id="filingsFeed"></div></div><aside class="white-card alert-rules"><div class="section-kicker">RULE-BASED WATCH</div><h2>Unusual activity</h2><p>Automatic checks on recorded end-of-day price and volume changes.</p><div class="rule"><label for="moveRule">Daily move <b id="moveRuleValue">±3.0%</b></label><input id="moveRule" type="range" min="1" max="10" step="0.5" value="3"></div><div class="rule"><label for="volumeRule">Volume multiple <b id="volumeRuleValue">2.0×</b></label><input id="volumeRule" type="range" min="1" max="5" step="0.25" value="2"></div><div class="subdivider"></div><h3>Triggered stocks <span id="alertCount" class="count-pill">0</span></h3><div id="alertRows"></div></aside></div>
+      </section>
+
+      <section class="page" id="page-research" aria-label="Company research">
+        <div class="page-heading"><div><span class="section-kicker">PULL / COMPANY RESEARCH</span><h1>Find the evidence<span class="period">.</span></h1><p>Answer company questions using annual reports, results and earnings-call transcripts.</p></div></div>
+        <div class="case-intro"><div><span class="feature-eyebrow dark">VERIFIED DOCUMENT INTELLIGENCE</span><strong>Start with the filing, not an AI claim.</strong><p>A reproducible Infosys case is built from official annual results and earnings-call evidence. Other tickers work with the primary PDFs you supply.</p></div><button id="jumpToInfy" class="primary-action" type="button">Explore INFY ↗</button></div>
+<section class="white-card intelligence-lab" id="intelligenceLab" aria-label="Source-grounded research"><div class="lab-head"><div><span class="section-kicker">PULL · RESEARCH LENSES</span><h2>Eight ways to read a company</h2></div><span class="lab-proof" id="caseStatus">Choose a company</span></div>
+<div class="angle-grid" id="angleButtons" role="group" aria-label="Research angle"><button type="button" data-angle="business">Business</button><button type="button" data-angle="financial">Financials</button><button type="button" data-angle="trajectory">Trajectory</button><button type="button" data-angle="balance">Balance sheet</button><button type="button" data-angle="cash">Cash quality</button><button type="button" data-angle="narrative" class="selected">Story vs numbers</button><button type="button" data-angle="guidance">Guidance</button><button type="button" data-angle="bullbear">Bull / Bear</button></div>
+<div class="angle-result" id="angleResult">Choose a lens to explore source-backed evidence.</div>
+<div class="lab-comparison" id="quarterPanel" hidden><div class="lab-head"><div><span class="section-kicker">VERIFIED · FOUR QUARTERS</span><h3>Actual financial trajectory</h3></div><div class="metric-switches" id="metricSwitches"><button data-metric="revenue" class="selected">Revenue</button><button data-metric="operating_profit">Operating profit</button><button data-metric="pbt">PBT</button><button data-metric="pat">PAT</button></div></div><div class="four-quarter-viz" id="fourQuarterViz"></div><div class="quarter-note" id="quarterFoot"></div></div>
+<div class="lab-comparison" id="resultsPanel" hidden><div class="lab-head"><div><span class="section-kicker">PUSH · RESULTS FIRST CUT</span><h3>Q2 FY27 vs Q1 / last year</h3></div><a id="resultsOriginal" href="#" target="_blank" rel="noopener">Company fact sheet ↗</a></div><div class="result-table-wrap"><table class="results-table"><thead><tr><th>Metric · ₹ crore</th><th>Q2 FY27</th><th>QoQ</th><th>YoY</th></tr></thead><tbody id="quarterRows"></tbody></table></div><p class="quarter-note">The company reports operating profit; FINN does not relabel it as EBITDA.</p></div></section><div class="research-grid"><div class="white-card research-card"><label class="field-label" for="researchSymbol">COMPANY TICKER</label><div class="ticker-search"><input id="researchSymbol" value="INFY" maxlength="20" autocomplete="off" aria-label="NSE ticker for research"><button type="button" id="loadSourcesBtn">Load sources</button></div><div class="ad-hoc-tickers"><span>EXPLORE</span><button class="quick-ticker active" data-company="INFY">INFY · sourced</button><button class="quick-ticker" data-company="HCLTECH">HCLTECH</button><button class="quick-ticker" data-company="PIDILITIND">PIDILITIND</button><button class="quick-ticker" data-company="DIXON">DIXON</button><button class="quick-ticker" data-company="DIVISLAB">DIVISLAB</button></div><div class="chip-row"><button class="question-chip" data-q="How does management guidance compare with reported results? Identify exact periods and cite the passages.">Guidance vs actuals</button><button class="question-chip" data-q="What happened to revenue and profit over the reported periods? Cite reported figures and accounting periods.">Financial trajectory</button><button class="question-chip" data-q="What are the main risks described in the company's primary documents? Cite the passages.">Key risks</button></div>
+          <details class="research-angles"><summary>More research angles <span>8 topics from the brief</span></summary>
+            <div class="chip-row angles-inner">
+              <button class="question-chip" data-q="Explain the company's business segments and revenue mix using only the primary documents.">Business snapshot</button>
+              <button class="question-chip" data-q="Summarise the company's latest disclosed revenue, operating margins, PAT and key ratios, with dates and source pages.">Financial snapshot</button>
+              <button class="question-chip" data-q="Assess multi-year financial trends: what is growing and what is compressing? Cite the periods.">Trajectory</button>
+              <button class="question-chip" data-q="How do debt, leverage, working capital and funding structure appear in the company's annual report?">Balance sheet</button>
+              <button class="question-chip" data-q="Does operating cash flow support reported profit? Discuss cash conversion and capex from the company's reports.">Cash quality</button>
+              <button class="question-chip" data-q="Where do management's statements in earnings calls agree or disagree with the actual reported financial figures?">Narrative vs numbers</button>
+              <button class="question-chip" data-q="What explicit growth, margin or capex guidance did management give, and over what horizon?">Guidance</button>
+              <button class="question-chip" data-q="Develop a short bull and bear case using only verifiable company statements and results; separate fact from inference.">Bull vs bear</button>
+            </div>
+          </details><label class="field-label" for="researchQuestion">QUESTION</label><textarea id="researchQuestion" rows="3" placeholder="For example: What did management guide for growth, and what was delivered?"></textarea><button class="primary-action ask-action" id="askResearch" type="button">Find evidence <span>→</span></button><div class="research-result" id="researchResult"><div class="research-idle"><div>⌕</div><strong>Start with a question.</strong><p>FINN retrieves citations from the documents you add. It does not invent fundamentals.</p></div></div></div>
+        <aside class="white-card source-card"><div class="section-top"><h2>Source library</h2><span id="sourceCount" class="count-pill">0</span></div><p class="subtle">Only company-issued documents. Follow the original source links below.</p><div id="verifiedSourceList"></div><div id="sourceDocs"></div><div class="upload-row"><label class="upload-button" for="sourceUpload">+ Upload PDF</label><input id="sourceUpload" type="file" accept="application/pdf"><select id="sourceKind" aria-label="PDF document type"><option value="annual_report">Annual report</option><option value="concall_transcript">Earnings call</option><option value="results_filing">Quarterly result</option></select></div><button id="findSourceLinks" class="plain-link source-discover" type="button">Find company report links ↗</button><div id="sourceDiscovery"></div><details class="example-disclosure"><summary>Import a direct PDF link</summary><p>Use a company or exchange-hosted HTTPS PDF URL. Redirects and private hosts are rejected.</p><div class="url-import"><input id="pdfUrl" type="url" placeholder="https://company.com/report.pdf" aria-label="Primary source PDF URL"><button id="importPdfUrl" type="button">Import PDF</button></div></details><details class="example-disclosure" hidden><summary>Internal fictional test case</summary><p>DEMOCO is fictional and includes three training documents for testing citations. It is not an NSE-listed company.</p><button type="button" id="loadExample">Load example documents</button></details></aside></div>
+      </section>
+    </main>
+  </div>
+</div>
+<nav class="mobile-nav" aria-label="Mobile navigation"><button data-nav="overview" class="selected"><span>◈</span>Home</button><button data-nav="watchlist"><span>▦</span>Stocks</button><button data-nav="portfolio"><span>▤</span>Portfolio</button><button data-nav="signals"><span>✳</span>Signals</button><button data-nav="research"><span>⌕</span>Research</button></nav>
+
+<div class="overlay" id="stockOverlay" aria-hidden="true"><section class="drawer stock-drawer" role="dialog" aria-modal="true" aria-label="Stock detail"><div class="drawer-top"><span class="section-kicker">STOCK DETAIL / NSE</span><button type="button" id="closeStock" class="close" aria-label="Close">×</button></div><div id="stockDetail"></div></section></div>
+<div class="overlay" id="editOverlay" aria-hidden="true"><section class="drawer edit-drawer" role="dialog" aria-modal="true" aria-label="Edit holding"><div class="drawer-top"><span class="section-kicker" id="editTitle">EDIT HOLDING</span><button type="button" id="closeEdit" class="close" aria-label="Close">×</button></div><form id="holdingForm"><label class="form-label">NSE ticker<input id="holdingTicker" required maxlength="20" placeholder="e.g. RELIANCE" autocomplete="off"></label><label class="form-label">Number of shares<input id="holdingQty" required min="0.01" step="0.01" type="number"></label><label class="form-label">Average purchase price (₹)<input id="holdingAvg" required min="0.01" step="0.01" type="number"></label><div class="form-caption">The purchase price is provided by you. It is needed to calculate gains and is not downloaded from a brokerage.</div><button class="primary-action full-button" type="submit">Save holding</button><button id="removeHoldingBtn" class="danger-link" type="button" hidden>Remove holding</button></form></section></div>
+<div class="overlay" id="addOverlay" aria-hidden="true"><section class="drawer edit-drawer" role="dialog" aria-modal="true" aria-label="Add watchlist stock"><div class="drawer-top"><span class="section-kicker">CUSTOMISE WATCHLIST</span><button type="button" id="closeAdd" class="close" aria-label="Close">×</button></div><h2>Add an NSE stock</h2><p class="subtle">Search any NSE symbol, not just the 18 starters. Data is shown only when the provider returns a valid record.</p><form id="addStockForm"><label class="form-label">NSE ticker<input id="addStockTicker" required maxlength="20" placeholder="e.g. DIXON" autocomplete="off"></label><label class="form-label">Display name (optional)<input id="addStockName" maxlength="80" placeholder="Company name"></label><button class="primary-action full-button" type="submit">Add to watchlist</button></form></section></div>
+<div class="overlay" id="infoOverlay" aria-hidden="true"><section class="drawer edit-drawer" role="dialog" aria-modal="true" aria-label="Data source information"><div class="drawer-top"><span class="section-kicker">DATA TRANSPARENCY</span><button type="button" id="closeInfo" class="close" aria-label="Close">×</button></div><h2>How FINN updates</h2><p>FINN checks public EOD market data and NSE filings automatically every four minutes while this page is open. Prices normally change only after a trading session; they do not move just because a timer ran.</p><p><b>Recheck sources</b> clears the server's saved responses and attempts fresh requests. This is rate-limited to protect public endpoints.</p><p><b>Price charts:</b> Yahoo Finance historical NSE data; an attributed TradingView widget may be offered if the host cannot retrieve history. <b>Company filings:</b> public NSE website (best effort).</p><p id="infoWarnings" class="subtle"></p><details class="example-disclosure" hidden><summary>Internal synthetic preview</summary><p>For an evaluator to verify UI mechanics during a provider outage, use a distinctly labelled synthetic fixture preview. These values are fictional and must not be used as investments data.</p><button id="openPreview" type="button">Open illustrative preview</button></details></section></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="/assets/app.js?v=4.0.0" defer></script>
+<script src="/assets/finn4.js?v=4.0.0" defer></script>
+</body>
+</html>

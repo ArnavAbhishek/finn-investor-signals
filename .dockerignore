@@ -1,0 +1,16 @@
+# Keep builds small and avoid shipping local state or secrets.
+.git
+.env
+.env.*
+!.env.example
+.venv
+.local_data
+.pytest_cache
+__pycache__
+*.pyc
+*.sqlite3
+docs
+scripts
+tests
+*.zip
+.DS_Store
